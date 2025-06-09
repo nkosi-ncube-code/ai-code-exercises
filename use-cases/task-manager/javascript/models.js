@@ -12,7 +12,8 @@ const TaskStatus = {
   TODO: 'todo',
   IN_PROGRESS: 'in_progress',
   REVIEW: 'review',
-  DONE: 'done'
+  DONE: 'done',
+  ABANDONED:'abandoned'
 };
 
 class Task {
@@ -49,6 +50,11 @@ class Task {
       return false;
     }
     return this.dueDate < new Date() && this.status !== TaskStatus.DONE;
+  }
+  
+  markAsAbandoned() {
+    this.status = TaskStatus.ABANDONED;
+    this.updatedAt = new Date();
   }
 }
 
